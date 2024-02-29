@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TopController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\LikeController;
-use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,4 +23,4 @@ Route::post('/item/recommendation',[TopController::class, 'recommendation']);
 Route::get('/item/{item_id}',[ItemController::class, 'index']);
 Route::post('/item/{item_id}/like',[LikeController::class, 'like']);
 Route::post('/item/{item_id}/unlike',[LikeController::class, 'unlike']);
-Route::post('/item/{item_id}/comment',[CommentController::class, 'comment']);
+

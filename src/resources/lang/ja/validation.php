@@ -153,6 +153,17 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'name' => '名前',
+        'email' => 'メールアドレス',
+        'password' => 'パスワード',
+        'postcode' => '郵便番号',
+        'address' => '住所',
+        'category' => '商品のカテゴリー',
+        'condition' => '商品の状態',
+        'name_item' => '商品名',
+        'description' => '商品の説明',
+        'img_url' => '画像',
+    ],
 
 ];

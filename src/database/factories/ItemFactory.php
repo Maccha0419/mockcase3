@@ -29,7 +29,7 @@ class ItemFactory extends Factory
             'brand'=>$this->faker->name,
             'price'=>$this->faker->numberBetween(100,10000),
             'description'=>$this->faker->sentence,
-            'img_url'=>$this->faker->imageUrl,
+            'img_url'=>'main_onepiece.jpg',
         ];
     }
 }

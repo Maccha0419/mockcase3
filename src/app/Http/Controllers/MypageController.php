@@ -12,7 +12,7 @@ class MypageController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $user_img = Profile::where('user_id', $user->id)->first()->img_url;
+        $user_img = Profile::where('user_id', $user->id)->first();
         $my_items = Item::where('user_id', $user->id)->get();
         $sold_items = Item::whereHas('sold_items', function ($query) use ($user) {
             $query->where('user_id', $user->id);

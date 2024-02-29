@@ -1,11 +1,33 @@
 <template>
     <div class="comment__content">
         <div class="comment__button" @click='active = !active'>コメント</div>
-        <p class="comment__number">{{ comment_number }}</p>
+        <p class="comment__number">{{ commentNumber }}</p>
+        <div class="error-log">
+            <p class="error" v-for="value in error.comment">{{ value }}</p>
+        </div>
         <transition class="comment__form">
             <div class="comment__form-content" v-show="active">
-                <input type="textarea" class="comment__form-mycomment" v-model="itemComment">
-                <button class="comment__form-button" @click="post(itemId, itemComment)">提出する</button>
+                <div class="comment_form-line" v-for="comment in comments" v-bind:key="comment.id">
+                    <div class="comment_form-line_content" v-if="comment.user.user_id != userId">
+                        <img v-if="comment.user.profile.img_url" :src="'../storage/img/profile/'+ comment.user.profile.img_url" alt="">
+                        <img v-else :src="'../storage/img/no-image.jpg'" alt="">
+                        <p class="comment_form-line_name">{{ comment.user.name }}</p>
+                        <p class="comment_form-line_comment">{{ comment.comment }}</p>
+                    </div>
+                    <div class="comment_form-line_content-myself" v-else>
+                        <p class="comment_form-line_name">{{  }}</p>
+                        <img v-if="comment.user.profile.img_url" :src="'../storage/img/profile/' + comment.user.profile.img_url" alt="">
+                        <img v-else :src="'../storage/img/no-image.jpg'" alt="">
+                        <p class="comment_form-line_comment">{{ comment.comment }}</p>
+                    </div>
+                </div>
+                <form class="comment-form-content__form" action="/comment" method="post">
+                    <input type="hidden" name="_token" :value="csrf">
+                    <input class="reservation-form__id" name="item_id" type="hidden" v-model="itemId">
+                    <input class="reservation-form__id" name="user_id" type="hidden" v-model="userId">
+                    <input type="textarea" class="comment__form-mycomment" name="comment" v-model="comment">
+                    <button class="comment__form-button">提出する</button>
+                </form>
             </div>
         </transition>
     </div>
@@ -13,29 +35,16 @@
 
 <script>
 export default {
-    props: ['userId', 'itemId', 'commentNumber'],
+    props: ['old', 'errors', 'userId', 'itemId', 'commentNumber', 'comments'],
     data() {
         return {
+            csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
             active: false,
-            itemComment: "",
-            comment_number: this.commentNumber
+            comment: this.old.comment,
+            error: {
+                comment: this.errors.comment,
+            }
         };
     },
-    methods: {
-        post(itemId, itemComment) {
-            let url = `/api/item/${itemId}/comment`
-            axios.post(url, {
-                user_id: this.userId,
-                comment: this.itemComment
-            })
-                .then(response => {
-                    this.active = false,
-                    this.comment_number = response.data[0]
-                })
-                .catch(error => {
-                    alert(error)
-                });
-        },
-    }
 }
 </script>

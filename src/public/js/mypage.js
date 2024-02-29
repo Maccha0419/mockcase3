@@ -5163,7 +5163,7 @@ var render = function render() {
       attrs: {
         name: "img_url",
         type: "image",
-        src: item.img_url,
+        src: "../storage/img/item/" + item.img_url,
         alt: "商品"
       }
     })])]);

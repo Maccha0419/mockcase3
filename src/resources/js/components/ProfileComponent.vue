@@ -5,12 +5,11 @@
         <div class="form__upper">
             <img v-if="!user_img" :src="'../storage/img/no-image.jpg'" alt="">
             <img :src="user_img" class="form__image" enctype="multipart/form-data" type="hidden">
-            <input type="hidden" name="user_img" id="user_img" v-model="user_img" accept="image/jng, image/jpeg">
             <label class="">画像を編集する
-                <input class="form__image-edit" type="file" name="selected_img" ref="preview" @change="upload()" style="display:none">
+                <input class="form__image-edit" type="file" name="user_img" ref="preview" @change="upload()" style="display:none">
             </label>
             <div class="error-log" >
-                <p class="error" v-for="value in error.user_img">{{ value }}</p>
+                <p class="error" v-for="value in error.user_url">{{ value }}</p>
             </div>
         </div>
         <div class="form__bottom">

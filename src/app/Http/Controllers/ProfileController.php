@@ -18,13 +18,17 @@ class ProfileController extends Controller
     public function update(ProfileRequest $request)
     {
         $profile = Profile::where('user_id', Auth::user()->id)->first();
-        $file = $request->file('selected_img');
-        if ($file) {
-            $dir = 'img/profile';
-            $file_name = $file->getClientOriginalName();
-            $file->storeAs('public/' . $dir, $file_name);
+        $file = $request->file('user_img');
+        if ($profile === null) {
+            $file_name = null;
         } else {
-            $file_name = $profile->img_url;
+            if ($file) {
+                $dir = 'img/profile';
+                $file_name = $file->getClientOriginalName();
+                $file->storeAs('public/' . $dir, $file_name);
+            } else {
+                $file_name = $profile->img_url;
+            }
         }
 
         User::where('id', $user = Auth::user()->id)->update([

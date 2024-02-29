@@ -3,9 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Rules\ZipCodeRule;
 
-class ProfileRequest extends FormRequest
+class CommentRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,11 +24,7 @@ class ProfileRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'string', 'max:255'],
-            'user_img' => ['image', 'mimes:jpeg,png,jpg', 'max:2048'],
-            'postcode' => ['required', new ZipCodeRule],
-            'address' => ['required', 'string', 'max:255'],
-            'building' => ['max:255'],
+            'comment' => ['required', 'string', 'max:255'],
         ];
     }
 }

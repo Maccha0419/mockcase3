@@ -19,15 +19,20 @@ class ItemController extends Controller
             $query->where('item_id', $item_id);
         })->get();
 
-        $defaultLiked = Like::where('user_id', $user->id)->where('item_id', $item_id)->first();
-        if (!empty($defaultLiked)) {
-            $defaultLiked = true;
-        } else {
+        if (empty($user->id)) {
             $defaultLiked = false;
+        } else {
+            $defaultLiked = Like::where('user_id', $user->id)->where('item_id', $item_id)->first();
+            if (!empty($defaultLiked)) {
+                $defaultLiked = true;
+            } else {
+                $defaultLiked = false;
+            }
         }
 
         $like_number = Like::where('item_id', $item_id)->count();
         $comment_number = Comment::where('item_id', $item_id)->count();
-        return view('item', compact('item','categories', 'defaultLiked','user', 'like_number', 'comment_number'));
+        $comments = Comment::with('user.profile')->get();
+        return view('item', compact('item','categories', 'defaultLiked','user', 'like_number', 'comment_number', 'comments'));
     }
 }

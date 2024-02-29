@@ -5076,27 +5076,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['userId', 'itemId', 'commentNumber'],
+  props: ['old', 'errors', 'userId', 'itemId', 'commentNumber', 'comments'],
   data: function data() {
     return {
+      csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
       active: false,
-      itemComment: "",
-      comment_number: this.commentNumber
+      comment: this.old.comment,
+      error: {
+        comment: this.errors.comment
+      }
     };
-  },
-  methods: {
-    post: function post(itemId, itemComment) {
-      var _this = this;
-      var url = "/api/item/".concat(itemId, "/comment");
-      axios.post(url, {
-        user_id: this.userId,
-        comment: this.itemComment
-      }).then(function (response) {
-        _this.active = false, _this.comment_number = response.data[0];
-      })["catch"](function (error) {
-        alert(error);
-      });
-    }
   }
 });
 
@@ -5128,7 +5117,13 @@ var render = function render() {
     }
   }, [_vm._v("コメント")]), _vm._v(" "), _c("p", {
     staticClass: "comment__number"
-  }, [_vm._v(_vm._s(_vm.comment_number))]), _vm._v(" "), _c("transition", {
+  }, [_vm._v(_vm._s(_vm.commentNumber))]), _vm._v(" "), _c("div", {
+    staticClass: "error-log"
+  }, _vm._l(_vm.error.comment, function (value) {
+    return _c("p", {
+      staticClass: "error"
+    }, [_vm._v(_vm._s(value))]);
+  }), 0), _vm._v(" "), _c("transition", {
     staticClass: "comment__form"
   }, [_c("div", {
     directives: [{
@@ -5138,34 +5133,123 @@ var render = function render() {
       expression: "active"
     }],
     staticClass: "comment__form-content"
+  }, [_vm._l(_vm.comments, function (comment) {
+    return _c("div", {
+      key: comment.id,
+      staticClass: "comment_form-line"
+    }, [comment.user.user_id != _vm.userId ? _c("div", {
+      staticClass: "comment_form-line_content"
+    }, [comment.user.profile.img_url ? _c("img", {
+      attrs: {
+        src: "../storage/img/profile/" + comment.user.profile.img_url,
+        alt: ""
+      }
+    }) : _c("img", {
+      attrs: {
+        src: "../storage/img/no-image.jpg",
+        alt: ""
+      }
+    }), _vm._v(" "), _c("p", {
+      staticClass: "comment_form-line_name"
+    }, [_vm._v(_vm._s(comment.user.name))]), _vm._v(" "), _c("p", {
+      staticClass: "comment_form-line_comment"
+    }, [_vm._v(_vm._s(comment.comment))])]) : _c("div", {
+      staticClass: "comment_form-line_content-myself"
+    }, [_c("p", {
+      staticClass: "comment_form-line_name"
+    }, [_vm._v(_vm._s())]), _vm._v(" "), comment.user.profile.img_url ? _c("img", {
+      attrs: {
+        src: "../storage/img/profile/" + comment.user.profile.img_url,
+        alt: ""
+      }
+    }) : _c("img", {
+      attrs: {
+        src: "../storage/img/no-image.jpg",
+        alt: ""
+      }
+    }), _vm._v(" "), _c("p", {
+      staticClass: "comment_form-line_comment"
+    }, [_vm._v(_vm._s(comment.comment))])])]);
+  }), _vm._v(" "), _c("form", {
+    staticClass: "comment-form-content__form",
+    attrs: {
+      action: "/comment",
+      method: "post"
+    }
   }, [_c("input", {
+    attrs: {
+      type: "hidden",
+      name: "_token"
+    },
+    domProps: {
+      value: _vm.csrf
+    }
+  }), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.itemComment,
-      expression: "itemComment"
+      value: _vm.itemId,
+      expression: "itemId"
     }],
-    staticClass: "comment__form-mycomment",
+    staticClass: "reservation-form__id",
     attrs: {
-      type: "textarea"
+      name: "item_id",
+      type: "hidden"
     },
     domProps: {
-      value: _vm.itemComment
+      value: _vm.itemId
     },
     on: {
       input: function input($event) {
         if ($event.target.composing) return;
-        _vm.itemComment = $event.target.value;
+        _vm.itemId = $event.target.value;
+      }
+    }
+  }), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.userId,
+      expression: "userId"
+    }],
+    staticClass: "reservation-form__id",
+    attrs: {
+      name: "user_id",
+      type: "hidden"
+    },
+    domProps: {
+      value: _vm.userId
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.userId = $event.target.value;
+      }
+    }
+  }), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.comment,
+      expression: "comment"
+    }],
+    staticClass: "comment__form-mycomment",
+    attrs: {
+      type: "textarea",
+      name: "comment"
+    },
+    domProps: {
+      value: _vm.comment
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.comment = $event.target.value;
       }
     }
   }), _vm._v(" "), _c("button", {
-    staticClass: "comment__form-button",
-    on: {
-      click: function click($event) {
-        return _vm.post(_vm.itemId, _vm.itemComment);
-      }
-    }
-  }, [_vm._v("提出する")])])])], 1);
+    staticClass: "comment__form-button"
+  }, [_vm._v("提出する")])])], 2)])], 1);
 };
 var staticRenderFns = [];
 render._withStripped = true;
@@ -39280,6 +39364,18 @@ module.exports = /*#__PURE__*/JSON.parse('{"name":"axios","version":"0.21.4","de
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
@@ -39331,11 +39427,17 @@ module.exports = /*#__PURE__*/JSON.parse('{"name":"axios","version":"0.21.4","de
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+// This entry need to be wrapped in an IIFE because it need to be in strict mode.
 (() => {
+"use strict";
 /*!*********************************!*\
   !*** ./resources/js/comment.js ***!
   \*********************************/
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+
+
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -39344,6 +39446,8 @@ var __webpack_exports__ = {};
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 window.Vue = (__webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js")["default"]);
+window.axios = (__webpack_require__(/*! axios */ "./node_modules/axios/index.js")["default"]);
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /**
  * The following block of code may be used to automatically register your

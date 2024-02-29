@@ -3,10 +3,9 @@
         <input type="hidden" name="_token" :value="csrf">
         <div class="form__upper">
             <label for="item_img">商品画像</label>
-            <img v-if="!item_img" :src="'../storage/img/no-image.jpg'" alt="" id="item_img">
-            <img :src="item_img" class="form__image" enctype="multipart/form-data" type="hidden" id="item_img">
-            <input type="hidden" name="item_img" id="item_img" v-model="user_img" accept="image/jng, image/jpeg">
             <label class="">画像を編集する
+            <img v-if="!item_img" :src="'../storage/img/no-image.jpg'" alt="" id="item_img">
+            <img :src="item_img" class="form__image" type="hidden" id="item_img">
                 <input class="form__image-edit" type="file" name="item_img" ref="preview" @change="upload()" style="display:none">
             </label>
             <div class="error-log" >
@@ -39,11 +38,11 @@
                 <h2 class="form__bottom-title">商品名と説明</h2>
                 <div class="form__group-content">
                     <div class="form__input--text">
-                        <label for="name">商品名</label>
-                        <input type="name" name="name" id="name" v-model="name">
+                        <label for="item_name">商品名</label>
+                        <input type="item_name" name="item_name" id="item_name" v-model="item_name">
                     </div>
                     <div class="error-log">
-                        <p class="error" v-for="value in error.name">{{ value }}</p>
+                        <p class="error" v-for="value in error.item_name">{{ value }}</p>
                     </div>
                 </div>
                 <div class="form__group-content">
@@ -83,14 +82,14 @@ export default {
             csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
             category: this.old.category,
             condition: this.old.condition,
-            name: this.old.name,
+            item_name: this.old.item_name,
             price: this.old.price,
             description: this.old.description,
             item_img: this.old.item_img,
             error: {
                 category: this.errors.category,
                 condition: this.errors.condition,
-                name: this.errors.name,
+                item_name: this.errors.item_name,
                 price: this.errors.price,
                 description: this.errors.description,
                 item_img: this.errors.item_img,

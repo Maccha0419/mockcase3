@@ -8,6 +8,7 @@ use App\Http\Controllers\MypageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\SellController;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,10 +21,10 @@ use App\Http\Controllers\SellController;
 |
 */
 
-
-Route::middleware('auth')->group(function () {
     Route::get('/', [TopController::class, 'index'])->name('top');
-    Route::get('/item/{item_id}', [ItemController::class, 'index']);
+    Route::get('/item/{item_id}', [ItemController::class, 'index'])->name('item');
+Route::middleware('auth')->group(function () {
+    Route::post('/comment', [CommentController::class, 'comment']);
     Route::get('/purchase/{item_id}', [PurchaseController::class, 'index'])->name('confirm');
     Route::post('/purchase', [PurchaseController::class, 'purchase']);
     Route::get('/purchase/payment/{item_id}', [PurchaseController::class, 'payment'])->name('payment');
@@ -35,4 +36,3 @@ Route::middleware('auth')->group(function () {
     Route::get('/sell', [SellController::class, 'index']);
     Route::post('/sell', [SellController::class, 'sell']);
 });
-// Route::get('/', [TopController::class, 'index'])->name('logout_top');

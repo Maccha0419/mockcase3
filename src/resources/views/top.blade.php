@@ -6,10 +6,21 @@
 @endsection
 
 @section('content')
-<div id="top">
+
+@if (Auth::check())
+<div id="top" class="component">
     <top-component
     :items="{{ json_encode($items) }}"
     :user-id="{{ json_encode($user->id) }}"
-    ></-component>
+    ></top-component>
 </div>
+@endif
+@if (!Auth::check())
+<div id="top" class="component">
+    <top-component
+    :items="{{ json_encode($items) }}"
+    ></top-component>
+</div>
+@endif
+
 @endsection

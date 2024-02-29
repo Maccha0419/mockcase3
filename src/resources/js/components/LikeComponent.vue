@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div>
+        <div class="like">
             <button v-if="!liked" type="button" class="liked" @click="like(itemId)">グレー星</button>
             <button v-else type="button" class="unliked" @click="unlike(itemId)">黄色星</button>
         </div>
@@ -22,31 +22,35 @@ export default {
     },
     methods: {
         like(itemId) {
-            let url = `/api/item/${itemId}/like`
-            axios.post(url, {
-                user_id: this.userId
-            })
-                .then(response => {
-                    this.liked = true,
-                    this.like_number = response.data[0]
+            if (itemId !== null) {
+                let url = `/api/item/${itemId}/like`
+                axios.post(url, {
+                    user_id: this.userId
                 })
-                .catch(error => {
-                    alert(error)
-                });
+                    .then(response => {
+                        this.liked = true,
+                            this.like_number = response.data[0]
+                    })
+                    .catch(error => {
+                        alert(error)
+                    });
+            }
         },
         unlike(itemId) {
-            let url = `/api/item/${itemId}/unlike`
-            axios.post(url, {
-                user_id: this.userId
-            })
-                .then(response => {
-                    this.liked = false,
-                    this.like_number = response.data[0]
+            if (itemId) {
+                let url = `/api/item/${itemId}/unlike`
+                axios.post(url, {
+                    user_id: this.userId
                 })
-                .catch(error => {
-                    alert(error)
-                });
-        }
+                    .then(response => {
+                        this.liked = false,
+                            this.like_number = response.data[0]
+                    })
+                    .catch(error => {
+                        alert(error)
+                    });
+            }
+        },
     }
 }
 </script>

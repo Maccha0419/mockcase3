@@ -5089,25 +5089,29 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     like: function like(itemId) {
       var _this = this;
-      var url = "/api/item/".concat(itemId, "/like");
-      axios.post(url, {
-        user_id: this.userId
-      }).then(function (response) {
-        _this.liked = true, _this.like_number = response.data[0];
-      })["catch"](function (error) {
-        alert(error);
-      });
+      if (itemId !== null) {
+        var url = "/api/item/".concat(itemId, "/like");
+        axios.post(url, {
+          user_id: this.userId
+        }).then(function (response) {
+          _this.liked = true, _this.like_number = response.data[0];
+        })["catch"](function (error) {
+          alert(error);
+        });
+      }
     },
     unlike: function unlike(itemId) {
       var _this2 = this;
-      var url = "/api/item/".concat(itemId, "/unlike");
-      axios.post(url, {
-        user_id: this.userId
-      }).then(function (response) {
-        _this2.liked = false, _this2.like_number = response.data[0];
-      })["catch"](function (error) {
-        alert(error);
-      });
+      if (itemId) {
+        var url = "/api/item/".concat(itemId, "/unlike");
+        axios.post(url, {
+          user_id: this.userId
+        }).then(function (response) {
+          _this2.liked = false, _this2.like_number = response.data[0];
+        })["catch"](function (error) {
+          alert(error);
+        });
+      }
     }
   }
 });
@@ -5129,7 +5133,9 @@ __webpack_require__.r(__webpack_exports__);
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("div", [_c("div", [!_vm.liked ? _c("button", {
+  return _c("div", [_c("div", {
+    staticClass: "like"
+  }, [!_vm.liked ? _c("button", {
     staticClass: "liked",
     attrs: {
       type: "button"

@@ -5082,14 +5082,14 @@ __webpack_require__.r(__webpack_exports__);
       csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
       category: this.old.category,
       condition: this.old.condition,
-      name: this.old.name,
+      item_name: this.old.item_name,
       price: this.old.price,
       description: this.old.description,
       item_img: this.old.item_img,
       error: {
         category: this.errors.category,
         condition: this.errors.condition,
-        name: this.errors.name,
+        item_name: this.errors.item_name,
         price: this.errors.price,
         description: this.errors.description,
         item_img: this.errors.item_img
@@ -5142,7 +5142,7 @@ var render = function render() {
     attrs: {
       "for": "item_img"
     }
-  }, [_vm._v("商品画像")]), _vm._v(" "), !_vm.item_img ? _c("img", {
+  }, [_vm._v("商品画像")]), _vm._v(" "), _c("label", {}, [_vm._v("画像を編集する\n        "), !_vm.item_img ? _c("img", {
     attrs: {
       src: "../storage/img/no-image.jpg",
       alt: "",
@@ -5152,33 +5152,10 @@ var render = function render() {
     staticClass: "form__image",
     attrs: {
       src: _vm.item_img,
-      enctype: "multipart/form-data",
       type: "hidden",
       id: "item_img"
     }
   }), _vm._v(" "), _c("input", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.user_img,
-      expression: "user_img"
-    }],
-    attrs: {
-      type: "hidden",
-      name: "item_img",
-      id: "item_img",
-      accept: "image/jng, image/jpeg"
-    },
-    domProps: {
-      value: _vm.user_img
-    },
-    on: {
-      input: function input($event) {
-        if ($event.target.composing) return;
-        _vm.user_img = $event.target.value;
-      }
-    }
-  }), _vm._v(" "), _c("label", {}, [_vm._v("画像を編集する\n            "), _c("input", {
     ref: "preview",
     staticClass: "form__image-edit",
     staticStyle: {
@@ -5186,7 +5163,7 @@ var render = function render() {
     },
     attrs: {
       type: "file",
-      name: "selected_img"
+      name: "item_img"
     },
     on: {
       change: function change($event) {
@@ -5285,32 +5262,32 @@ var render = function render() {
     staticClass: "form__input--text"
   }, [_c("label", {
     attrs: {
-      "for": "name"
+      "for": "item_name"
     }
   }, [_vm._v("商品名")]), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.name,
-      expression: "name"
+      value: _vm.item_name,
+      expression: "item_name"
     }],
     attrs: {
-      type: "name",
-      name: "name",
-      id: "name"
+      type: "item_name",
+      name: "item_name",
+      id: "item_name"
     },
     domProps: {
-      value: _vm.name
+      value: _vm.item_name
     },
     on: {
       input: function input($event) {
         if ($event.target.composing) return;
-        _vm.name = $event.target.value;
+        _vm.item_name = $event.target.value;
       }
     }
   })]), _vm._v(" "), _c("div", {
     staticClass: "error-log"
-  }, _vm._l(_vm.error.name, function (value) {
+  }, _vm._l(_vm.error.item_name, function (value) {
     return _c("p", {
       staticClass: "error"
     }, [_vm._v(_vm._s(value))]);

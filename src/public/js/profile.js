@@ -5168,28 +5168,6 @@ var render = function render() {
       enctype: "multipart/form-data",
       type: "hidden"
     }
-  }), _vm._v(" "), _c("input", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.user_img,
-      expression: "user_img"
-    }],
-    attrs: {
-      type: "hidden",
-      name: "user_img",
-      id: "user_img",
-      accept: "image/jng, image/jpeg"
-    },
-    domProps: {
-      value: _vm.user_img
-    },
-    on: {
-      input: function input($event) {
-        if ($event.target.composing) return;
-        _vm.user_img = $event.target.value;
-      }
-    }
   }), _vm._v(" "), _c("label", {}, [_vm._v("画像を編集する\n            "), _c("input", {
     ref: "preview",
     staticClass: "form__image-edit",
@@ -5198,7 +5176,7 @@ var render = function render() {
     },
     attrs: {
       type: "file",
-      name: "selected_img"
+      name: "user_img"
     },
     on: {
       change: function change($event) {
@@ -5207,7 +5185,7 @@ var render = function render() {
     }
   })]), _vm._v(" "), _c("div", {
     staticClass: "error-log"
-  }, _vm._l(_vm.error.user_img, function (value) {
+  }, _vm._l(_vm.error.user_url, function (value) {
     return _c("p", {
       staticClass: "error"
     }, [_vm._v(_vm._s(value))]);

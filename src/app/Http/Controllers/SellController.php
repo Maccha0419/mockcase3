@@ -31,7 +31,7 @@ class SellController extends Controller
             'condition' => $request->condition,
         ]);
         Item::create([
-            'name' => $request->name,
+            'name' => $request->name_item,
             'price' => $request->price,
             'description' => $request->description,
             'img_url' => $file_name,
