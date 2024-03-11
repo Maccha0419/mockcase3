@@ -22,6 +22,7 @@ use App\Http\Controllers\CommentController;
 */
 
     Route::get('/', [TopController::class, 'index'])->name('top');
+    Route::get('/search', [TopController::class, 'search']);
     Route::get('/item/{item_id}', [ItemController::class, 'index'])->name('item');
 Route::middleware('auth')->group(function () {
     Route::post('/comment', [CommentController::class, 'comment']);

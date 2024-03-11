@@ -15,4 +15,11 @@ class Category extends Model
     {
         return $this->hasMany(CategoryItem::class);
     }
+
+    public function scopeKeywordCategorySearch($query, $keyword)
+    {
+        if (!empty($keyword)) {
+            $query->where('name', 'like', '%' . $keyword . '%');
+        }
+    }
 }

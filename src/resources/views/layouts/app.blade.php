@@ -32,7 +32,7 @@
                 </a>
                 <form class="header__search" action="/search" method="get">
                     @csrf
-                    <input name="search" type="text" value="" placeholder="なにをお探しですか？">
+                    <input name="keyword" type="text" value="@if (isset( $keyword )) {{$keyword}} @endif" placeholder="なにをお探しですか？">
                 </form>
                 @if (Auth::check())
                 <nav>

@@ -1,10 +1,12 @@
 <template>
-    <div>
-        <div class="like">
-            <button v-if="!liked" type="button" class="liked" @click="like(itemId)">グレー星</button>
-            <button v-else type="button" class="unliked" @click="unlike(itemId)">黄色星</button>
+    <div class="like">
+        <div class="like__content">
+            <button v-if="!liked" type="button" class="liked" @click="like(itemId)"></button>
+            <button v-else type="button" class="unliked" @click="unlike(itemId)"></button>
         </div>
-        <p class="like__number">{{ like_number }}</p>
+        <div class="like__number">
+            <p class="like__number-content">{{ like_number }}</p>
+        </div>
     </div>
 </template>
 

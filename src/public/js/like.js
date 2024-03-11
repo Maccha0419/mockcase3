@@ -5133,8 +5133,10 @@ __webpack_require__.r(__webpack_exports__);
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("div", [_c("div", {
+  return _c("div", {
     staticClass: "like"
+  }, [_c("div", {
+    staticClass: "like__content"
   }, [!_vm.liked ? _c("button", {
     staticClass: "liked",
     attrs: {
@@ -5145,7 +5147,7 @@ var render = function render() {
         return _vm.like(_vm.itemId);
       }
     }
-  }, [_vm._v("グレー星")]) : _c("button", {
+  }) : _c("button", {
     staticClass: "unliked",
     attrs: {
       type: "button"
@@ -5155,9 +5157,11 @@ var render = function render() {
         return _vm.unlike(_vm.itemId);
       }
     }
-  }, [_vm._v("黄色星")])]), _vm._v(" "), _c("p", {
+  })]), _vm._v(" "), _c("div", {
     staticClass: "like__number"
-  }, [_vm._v(_vm._s(_vm.like_number))])]);
+  }, [_c("p", {
+    staticClass: "like__number-content"
+  }, [_vm._v(_vm._s(_vm.like_number))])])]);
 };
 var staticRenderFns = [];
 render._withStripped = true;

@@ -1,15 +1,21 @@
 <template>
     <div class="comment__content">
-        <div class="comment__button" @click='active = !active'>コメント</div>
-        <p class="comment__number">{{ commentNumber }}</p>
-        <div class="error-log">
-            <p class="error" v-for="value in error.comment">{{ value }}</p>
+        <div class="comment">
+            <div class="comment__button" @click='active = !active'></div>
+            <div class="comment__number">
+                <p class="comment__number-content">{{ commentNumber }}</p>
+            </div>
+            <div class="error-log">
+                <p class="error" v-for="value in error.comment">{{ value }}</p>
+            </div>
         </div>
         <transition class="comment__form">
             <div class="comment__form-content" v-show="active">
                 <div class="comment_form-line" v-for="comment in comments" v-bind:key="comment.id">
                     <div class="comment_form-line_content" v-if="comment.user.user_id != userId">
-                        <img v-if="comment.user.profile.img_url" :src="'../storage/img/profile/'+ comment.user.profile.img_url" alt="">
+                        <div class="" v-if="comment.user.profile">
+                            <img v-if="comment.user.profile.img_url" :src="'../storage/img/profile/' + comment.user.profile.img_url" alt="">
+                        </div>
                         <img v-else :src="'../storage/img/no-image.jpg'" alt="">
                         <p class="comment_form-line_name">{{ comment.user.name }}</p>
                         <p class="comment_form-line_comment">{{ comment.comment }}</p>

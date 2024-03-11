@@ -26,7 +26,7 @@
 
 <script>
 export default {
-    props: ['userId','items'],
+    props: ['userId','items','keyword'],
     data() {
         return {
             liked: false,
@@ -51,6 +51,7 @@ export default {
             let url = `/api/item/recommendation`
             axios.post(url, {
                 user_id: this.userId,
+                keyword: this.keyword,
             })
                 .then(response => {
                     this.liked = false;

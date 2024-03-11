@@ -12,6 +12,7 @@
     <top-component
     :items="{{ json_encode($items) }}"
     :user-id="{{ json_encode($user->id) }}"
+    :keyword="{{ json_encode($keyword) }}"
     ></top-component>
 </div>
 @endif
@@ -19,6 +20,7 @@
 <div id="top" class="component">
     <top-component
     :items="{{ json_encode($items) }}"
+    :keyword="{{ json_encode($keyword) }}"
     ></top-component>
 </div>
 @endif

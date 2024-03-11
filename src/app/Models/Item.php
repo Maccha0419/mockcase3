@@ -40,4 +40,11 @@ class Item extends Model
     {
         return $this->hasMany(SoldItem::class);
     }
+    public function scopeKeywordItemSearch($query, $keyword)
+    {
+        if (!empty($keyword)) {
+            $query->where('name', 'like', '%' . $keyword . '%')
+                ->orWhere('brand', 'like', '%' . $keyword . '%');
+        }
+    }
 }

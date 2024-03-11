@@ -5109,21 +5109,25 @@ var render = function render() {
   return _c("div", {
     staticClass: "comment__content"
   }, [_c("div", {
+    staticClass: "comment"
+  }, [_c("div", {
     staticClass: "comment__button",
     on: {
       click: function click($event) {
         _vm.active = !_vm.active;
       }
     }
-  }, [_vm._v("コメント")]), _vm._v(" "), _c("p", {
+  }), _vm._v(" "), _c("div", {
     staticClass: "comment__number"
-  }, [_vm._v(_vm._s(_vm.commentNumber))]), _vm._v(" "), _c("div", {
+  }, [_c("p", {
+    staticClass: "comment__number-content"
+  }, [_vm._v(_vm._s(_vm.commentNumber))])]), _vm._v(" "), _c("div", {
     staticClass: "error-log"
   }, _vm._l(_vm.error.comment, function (value) {
     return _c("p", {
       staticClass: "error"
     }, [_vm._v(_vm._s(value))]);
-  }), 0), _vm._v(" "), _c("transition", {
+  }), 0)]), _vm._v(" "), _c("transition", {
     staticClass: "comment__form"
   }, [_c("div", {
     directives: [{
@@ -5139,12 +5143,12 @@ var render = function render() {
       staticClass: "comment_form-line"
     }, [comment.user.user_id != _vm.userId ? _c("div", {
       staticClass: "comment_form-line_content"
-    }, [comment.user.profile.img_url ? _c("img", {
+    }, [comment.user.profile ? _c("div", {}, [comment.user.profile.img_url ? _c("img", {
       attrs: {
         src: "../storage/img/profile/" + comment.user.profile.img_url,
         alt: ""
       }
-    }) : _c("img", {
+    }) : _vm._e()]) : _c("img", {
       attrs: {
         src: "../storage/img/no-image.jpg",
         alt: ""

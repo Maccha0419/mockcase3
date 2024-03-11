@@ -5076,7 +5076,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['userId', 'items'],
+  props: ['userId', 'items', 'keyword'],
   data: function data() {
     return {
       liked: false,
@@ -5100,7 +5100,8 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
       var url = "/api/item/recommendation";
       axios.post(url, {
-        user_id: this.userId
+        user_id: this.userId,
+        keyword: this.keyword
       }).then(function (response) {
         _this2.liked = false;
         _this2.data_items = response.data;
