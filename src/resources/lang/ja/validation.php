@@ -161,9 +161,11 @@ return [
         'address' => '住所',
         'category' => '商品のカテゴリー',
         'condition' => '商品の状態',
-        'name_item' => '商品名',
+        'item_name' => '商品名',
+        'item_brand' => 'ブランド名',
         'description' => '商品の説明',
-        'img_url' => '画像',
+        'item_img' => '画像',
+        'price' => '価格',
     ],
 
 ];

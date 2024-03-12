@@ -5117,14 +5117,14 @@ var render = function render() {
   }, [_c("div", {
     staticClass: "top__header"
   }, [_c("div", {
-    staticClass: "top__header-recommendation"
+    staticClass: "top__header-button"
   }, [!_vm.liked ? _c("button", {
-    staticClass: "recommendation_on",
+    staticClass: "button_on",
     attrs: {
       type: "button"
     }
-  }, [_vm._v("出品した商品赤")]) : _c("button", {
-    staticClass: "recommendation_off",
+  }, [_vm._v("出品した商品")]) : _c("button", {
+    staticClass: "button_off",
     attrs: {
       type: "button"
     },
@@ -5133,10 +5133,10 @@ var render = function render() {
         return _vm.a(_vm.liked);
       }
     }
-  }, [_vm._v("出品した商品黒")])]), _vm._v(" "), _c("div", {
-    staticClass: "top__header-mylist"
+  }, [_vm._v("出品した商品")])]), _vm._v(" "), _c("div", {
+    staticClass: "top__header-button"
   }, [!_vm.liked ? _c("button", {
-    staticClass: "mylist_on",
+    staticClass: "button_off",
     attrs: {
       type: "button"
     },
@@ -5145,15 +5145,17 @@ var render = function render() {
         return _vm.b(_vm.liked);
       }
     }
-  }, [_vm._v("購入した商品黒")]) : _c("button", {
-    staticClass: "mylist_off",
+  }, [_vm._v("購入した商品")]) : _c("button", {
+    staticClass: "button_on",
     attrs: {
       type: "button"
     }
-  }, [_vm._v("購入した商品赤")])])]), _vm._v(" "), _vm._l(_vm.items, function (item) {
+  }, [_vm._v("購入した商品")])])]), _vm._v(" "), _c("div", {
+    staticClass: "top__inner"
+  }, [_vm._l(_vm.items, function (item) {
     return _c("div", {
       key: item.id,
-      staticClass: "top__inner"
+      staticClass: "top__inner-card"
     }, [_c("a", {
       attrs: {
         href: "item/".concat(item.id)
@@ -5167,7 +5169,15 @@ var render = function render() {
         alt: "商品"
       }
     })])]);
-  })], 2);
+  }), _vm._v(" "), _c("div", {
+    staticClass: "dummy"
+  }), _vm._v(" "), _c("div", {
+    staticClass: "dummy"
+  }), _vm._v(" "), _c("div", {
+    staticClass: "dummy"
+  }), _vm._v(" "), _c("div", {
+    staticClass: "dummy"
+  })], 2)]);
 };
 var staticRenderFns = [];
 render._withStripped = true;

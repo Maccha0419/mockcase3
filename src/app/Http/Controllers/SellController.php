@@ -31,12 +31,13 @@ class SellController extends Controller
             'condition' => $request->condition,
         ]);
         Item::create([
-            'name' => $request->name_item,
-            'price' => $request->price,
-            'description' => $request->description,
-            'img_url' => $file_name,
             'user_id' => Auth::user()->id,
             'condition_id' => Condition::where('condition', $request->condition)->first()->id,
+            'name' => $request->item_name,
+            'brand' => $request->brand,
+            'price' => $request->price,
+            'img_url' => $file_name,
+            'description' => $request->description,
         ]);
         CategoryItem::create([
             'item_id' => Category::where('name', $request->category)->first()->id,

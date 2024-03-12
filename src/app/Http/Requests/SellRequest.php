@@ -27,6 +27,7 @@ class SellRequest extends FormRequest
             'category' => ['required', 'string', 'max:255'],
             'condition' => ['required', 'string', 'max:255'],
             'item_name' => ['required', 'string', 'max:255'],
+            'brand' => ['required', 'string', 'max:255'],
             'price' => ['required', 'numeric'],
             'description' => ['required', 'string', 'max:255'],
             'item_img' => ['required', 'image', 'mimes:jpeg,png,jpg', 'max:10480'],

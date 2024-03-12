@@ -5083,6 +5083,7 @@ __webpack_require__.r(__webpack_exports__);
       category: this.old.category,
       condition: this.old.condition,
       item_name: this.old.item_name,
+      brand: this.old.brand,
       price: this.old.price,
       description: this.old.description,
       item_img: this.old.item_img,
@@ -5090,6 +5091,7 @@ __webpack_require__.r(__webpack_exports__);
         category: this.errors.category,
         condition: this.errors.condition,
         item_name: this.errors.item_name,
+        brand: this.errors.brand,
         price: this.errors.price,
         description: this.errors.description,
         item_img: this.errors.item_img
@@ -5137,27 +5139,27 @@ var render = function render() {
       value: _vm.csrf
     }
   }), _vm._v(" "), _c("div", {
-    staticClass: "form__upper"
+    staticClass: "form__group"
+  }, [_c("div", {
+    staticClass: "form__group-content"
   }, [_c("label", {
     attrs: {
       "for": "item_img"
     }
-  }, [_vm._v("商品画像")]), _vm._v(" "), _c("label", {}, [_vm._v("画像を編集する\n        "), !_vm.item_img ? _c("img", {
-    attrs: {
-      src: "../storage/img/no-image.jpg",
-      alt: "",
-      id: "item_img"
-    }
-  }) : _vm._e(), _vm._v(" "), _c("img", {
+  }, [_vm._v("商品画像")]), _vm._v(" "), _c("div", {
+    staticClass: "form__image-contents"
+  }, [_c("label", {
+    staticClass: "form__image-edit"
+  }, [_c("img", {
     staticClass: "form__image",
     attrs: {
       src: _vm.item_img,
-      type: "hidden",
+      type: "",
       id: "item_img"
     }
   }), _vm._v(" "), _c("input", {
     ref: "preview",
-    staticClass: "form__image-edit",
+    staticClass: "form__image-select",
     staticStyle: {
       display: "none"
     },
@@ -5170,19 +5172,17 @@ var render = function render() {
         return _vm.upload();
       }
     }
-  })]), _vm._v(" "), _c("div", {
+  }), _vm._v(" "), !_vm.item_img ? _c("div", {
+    staticClass: "form__image-text"
+  }, [_vm._v("画像を編集する")]) : _vm._e()])]), _vm._v(" "), _c("div", {
     staticClass: "error-log"
   }, _vm._l(_vm.error.item_img, function (value) {
     return _c("p", {
       staticClass: "error"
     }, [_vm._v(_vm._s(value))]);
-  }), 0)]), _vm._v(" "), _c("div", {
-    staticClass: "form__bottom"
-  }, [_c("div", {
+  }), 0)])]), _vm._v(" "), _c("div", {
     staticClass: "form__group"
-  }, [_c("h2", {
-    staticClass: "form__group-title"
-  }, [_vm._v("商品の詳細")]), _vm._v(" "), _c("div", {
+  }, [_vm._m(0), _vm._v(" "), _c("div", {
     staticClass: "form__group-content"
   }, [_c("div", {
     staticClass: "form__input--text"
@@ -5254,9 +5254,7 @@ var render = function render() {
     }, [_vm._v(_vm._s(value))]);
   }), 0)])]), _vm._v(" "), _c("div", {
     staticClass: "form__group"
-  }, [_c("h2", {
-    staticClass: "form__bottom-title"
-  }, [_vm._v("商品名と説明")]), _vm._v(" "), _c("div", {
+  }, [_vm._m(1), _vm._v(" "), _c("div", {
     staticClass: "form__group-content"
   }, [_c("div", {
     staticClass: "form__input--text"
@@ -5288,6 +5286,41 @@ var render = function render() {
   })]), _vm._v(" "), _c("div", {
     staticClass: "error-log"
   }, _vm._l(_vm.error.item_name, function (value) {
+    return _c("p", {
+      staticClass: "error"
+    }, [_vm._v(_vm._s(value))]);
+  }), 0)]), _vm._v(" "), _c("div", {
+    staticClass: "form__group-content"
+  }, [_c("div", {
+    staticClass: "form__input--text"
+  }, [_c("label", {
+    attrs: {
+      "for": "brand"
+    }
+  }, [_vm._v("ブランド名")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.brand,
+      expression: "brand"
+    }],
+    attrs: {
+      type: "brand",
+      name: "brand",
+      id: "brand"
+    },
+    domProps: {
+      value: _vm.brand
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.brand = $event.target.value;
+      }
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "error-log"
+  }, _vm._l(_vm.error.brand, function (value) {
     return _c("p", {
       staticClass: "error"
     }, [_vm._v(_vm._s(value))]);
@@ -5330,9 +5363,7 @@ var render = function render() {
     }, [_vm._v(_vm._s(value))]);
   }), 0)])]), _vm._v(" "), _c("div", {
     staticClass: "form__group"
-  }, [_c("h2", {
-    staticClass: "form__bottom-title"
-  }, [_vm._v("販売価格")]), _vm._v(" "), _c("div", {
+  }, [_vm._m(2), _vm._v(" "), _c("div", {
     staticClass: "form__group-content"
   }, [_c("div", {
     staticClass: "form__input--text"
@@ -5367,9 +5398,33 @@ var render = function render() {
     return _c("p", {
       staticClass: "error"
     }, [_vm._v(_vm._s(value))]);
-  }), 0)])])]), _vm._v(" "), _vm._m(0)]);
+  }), 0)])]), _vm._v(" "), _vm._m(3)]);
 };
 var staticRenderFns = [function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "form__group-name"
+  }, [_c("h2", {
+    staticClass: "form__group-title"
+  }, [_vm._v("商品の詳細")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "form__group-name"
+  }, [_c("h2", {
+    staticClass: "form__bottom-title"
+  }, [_vm._v("商品名と説明")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "form__group-name"
+  }, [_c("h2", {
+    staticClass: "form__bottom-title"
+  }, [_vm._v("販売価格")])]);
+}, function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {

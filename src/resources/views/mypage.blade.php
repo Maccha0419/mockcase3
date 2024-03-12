@@ -9,12 +9,24 @@
 <div class="mypage__content">
     <div class="mypage__upper">
         <div class="mypage__user">
+        @if($user_img == null)
+            <img src="{{ asset('storage/img/no-image.jpg' ) }}">
+        @else
             @if($user_img->img_url == null)
             <img src="{{ asset('storage/img/no-image.jpg' ) }}">
             @else
             <img src="{{ asset('storage/img/profile/' . $user_img->img_url) }}" alt="プロフィール画像" class="mypage__user-img">
-            <p class="mypage__user-name">{{ $user->name }}</p>
             @endif
+        @endif
+        @if($user->name == null)
+            <div class="mypage__user-name">
+                <h2>ユーザー名</h2>
+            </div>
+        @else
+            <div class="mypage__user-name">
+                <h2>{{ $user->name }}</h2>
+            </div>
+        @endif
         </div>
         <div class="edit">
             <form action="/mypage/profile" class="mypage__edit" method="get">

@@ -5134,26 +5134,6 @@ var render = function render() {
     domProps: {
       value: _vm.csrf
     }
-  }), _vm._v(" "), _c("input", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.userId,
-      expression: "userId"
-    }],
-    attrs: {
-      type: "hidden",
-      name: "user_id"
-    },
-    domProps: {
-      value: _vm.userId
-    },
-    on: {
-      input: function input($event) {
-        if ($event.target.composing) return;
-        _vm.userId = $event.target.value;
-      }
-    }
   }), _vm._v(" "), _c("div", {
     staticClass: "form__upper"
   }, [!_vm.user_img ? _c("img", {
@@ -5161,16 +5141,16 @@ var render = function render() {
       src: "../storage/img/no-image.jpg",
       alt: ""
     }
-  }) : _vm._e(), _vm._v(" "), _c("img", {
-    staticClass: "form__image",
+  }) : _c("img", {
     attrs: {
       src: _vm.user_img,
       enctype: "multipart/form-data",
       type: "hidden"
     }
-  }), _vm._v(" "), _c("label", {}, [_vm._v("画像を編集する\n            "), _c("input", {
+  }), _vm._v(" "), _c("label", {
+    staticClass: "form__image-edit"
+  }, [_vm._v("画像を選択する\n            "), _c("input", {
     ref: "preview",
-    staticClass: "form__image-edit",
     staticStyle: {
       display: "none"
     },
@@ -5190,8 +5170,6 @@ var render = function render() {
       staticClass: "error"
     }, [_vm._v(_vm._s(value))]);
   }), 0)]), _vm._v(" "), _c("div", {
-    staticClass: "form__bottom"
-  }, [_c("div", {
     staticClass: "form__group"
   }, [_c("div", {
     staticClass: "form__group-content"
@@ -5333,7 +5311,7 @@ var render = function render() {
     return _c("p", {
       staticClass: "error"
     }, [_vm._v(_vm._s(value))]);
-  }), 0)])])]), _vm._v(" "), _vm._m(0)]);
+  }), 0)])]), _vm._v(" "), _vm._m(0)]);
 };
 var staticRenderFns = [function () {
   var _vm = this,

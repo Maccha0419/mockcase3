@@ -38,7 +38,7 @@
                 <nav>
                     <ul class="header-nav">
                         <li class="header-nav__item">
-                            <form class="form" action="/logout" method="post">
+                            <form class="form__logout" action="/logout" method="post">
                                 @csrf
                                 <button class="header__logout-button">ログアウト</button>
                             </form>

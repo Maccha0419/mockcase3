@@ -19,22 +19,26 @@ class ProfileController extends Controller
     {
         $profile = Profile::where('user_id', Auth::user()->id)->first();
         $file = $request->file('user_img');
-        if ($profile === null) {
-            $file_name = null;
+        if ($file) {
+            $dir = 'img/profile';
+            $file_name = $file->getClientOriginalName();
+            $file->storeAs('public/' . $dir, $file_name);
         } else {
-            if ($file) {
-                $dir = 'img/profile';
-                $file_name = $file->getClientOriginalName();
-                $file->storeAs('public/' . $dir, $file_name);
+            if (!$profile) {
+                $file_name = null;
             } else {
-                $file_name = $profile->img_url;
+                if(!empty($profile->img_url)) {
+                    $file_name = null;
+                }else {
+                    $file_name = $profile->img_url;
+                }
             }
         }
 
         User::where('id', $user = Auth::user()->id)->update([
             'name' => $request->name,
         ]);
-        if (empty($profile) === false) {
+        if (!empty($profile)) {
             $profile -> update([
                 'img_url' => $file_name,
                 'postcode' => $request->postcode,

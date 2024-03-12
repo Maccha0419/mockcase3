@@ -11,6 +11,7 @@ class TopController extends Controller
 {
     public function index(Request $request)
     {
+        $keyword = $request->keyword;
         $user = Auth::user();
         $items = Item::get();
         return view('top', compact('user','items','keyword'));
@@ -38,7 +39,6 @@ class TopController extends Controller
 
     public function recommendation(Request $request)
     {
-        dd($request);
         $keyword = $request->keyword;
         if ($keyword) {
             $user = Auth::user();

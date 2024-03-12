@@ -1,1 +1,102 @@
+.mypage__upper {
+    // margin: 30px;
+    width: 100%;
+    height: 35vh;
+    position: fixed;
+    top: 8vh;
+    display: flex;
+    z-index: 200;
+    background: rgb(255, 255, 255);
+    justify-content: space-around;
+    align-items: center;
+}
+.mypage__user {
+    display: flex;
+}
+.mypage__user img{
+    height: 25vh;
+    width: 25vh;
+    border-radius: 50%;
+    background-position: center center;
+    object-fit: cover;
+}
+.mypage__user-name {
+    margin-left: 50px;
+}
+.mypage__user-name h2{
+    margin: 85px auto;
+    font-size: 30px;
+}
+.mypage__edit {
+    border-radius: solid 2px #ff4726;
+}
+.edit__button {
+    background: white;
+    color: #ff4726;
+    font-size: large;
+    font-weight: bold;
+    border-radius: 5px;
+    border: solid 2px #ff4726;
+    cursor: pointer;
+    width: 220px;
+    height: 40px;
+}
 
+
+.top__header {
+    display: flex;
+    width: 100%;
+    height: 5vh;
+    position: absolute;
+    top: 43vh;
+    position: fixed;
+    z-index: 200;
+    background: rgb(255, 255, 255);
+    border-bottom: solid 2px gray;
+}
+.top__header-button {
+    margin-left: 130px;
+}
+.button_on {
+    color: red;
+    font-size: large;
+    font-weight: bold;
+    background: white;
+    border: none;
+    padding-top: 5px;
+    cursor: pointer;
+}
+.button_off {
+    color: gray;
+    font-size: large;
+    font-weight: bold;
+    background: white;
+    border: none;
+    padding-top: 5px;
+    cursor: pointer;
+}
+.top__inner {
+    position: absolute;
+    top: 48vh;
+    z-index: 0;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 10px 50px;
+}
+
+.top__inner-card {
+    padding: 40px 25px;
+}
+
+.item__card-img {
+    height: 25vh;
+    width: 25vh;
+    background-position: center center;
+    object-fit: cover;
+}
+
+.dummy {
+    width: 25vh;
+    margin: 25px;
+}
