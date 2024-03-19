@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Profile;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ProfileRequest;
+use Storage;
 
 class ProfileController extends Controller
 {
@@ -23,6 +24,7 @@ class ProfileController extends Controller
             $dir = 'img/profile';
             $file_name = $file->getClientOriginalName();
             $file->storeAs('public/' . $dir, $file_name);
+            Storage::disk('s3')->putFile('/user', $file);
         } else {
             if (!$profile) {
                 $file_name = null;

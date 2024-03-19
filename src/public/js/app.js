@@ -26927,32 +26927,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/sass/payment.scss":
-/*!*************************************!*\
-  !*** ./resources/sass/payment.scss ***!
-  \*************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
-
-/***/ }),
-
-/***/ "./resources/sass/checkout.scss":
-/*!**************************************!*\
-  !*** ./resources/sass/checkout.scss ***!
-  \**************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
-
-/***/ }),
-
 /***/ "./resources/sass/app.scss":
 /*!*********************************!*\
   !*** ./resources/sass/app.scss ***!
@@ -39483,8 +39457,6 @@ module.exports = /*#__PURE__*/JSON.parse('{"name":"axios","version":"0.21.4","de
 /******/ 			"css/comment": 0,
 /******/ 			"css/like": 0,
 /******/ 			"css/top": 0,
-/******/ 			"css/checkout": 0,
-/******/ 			"css/payment": 0,
 /******/ 			"css/sell": 0,
 /******/ 			"css/profile": 0,
 /******/ 			"css/mypage": 0
@@ -39537,16 +39509,14 @@ module.exports = /*#__PURE__*/JSON.parse('{"name":"axios","version":"0.21.4","de
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["css/app","css/comment","css/like","css/top","css/checkout","css/payment","css/sell","css/profile","css/mypage"], () => (__webpack_require__("./resources/js/app.js")))
-/******/ 	__webpack_require__.O(undefined, ["css/app","css/comment","css/like","css/top","css/checkout","css/payment","css/sell","css/profile","css/mypage"], () => (__webpack_require__("./resources/sass/app.scss")))
-/******/ 	__webpack_require__.O(undefined, ["css/app","css/comment","css/like","css/top","css/checkout","css/payment","css/sell","css/profile","css/mypage"], () => (__webpack_require__("./resources/sass/top.scss")))
-/******/ 	__webpack_require__.O(undefined, ["css/app","css/comment","css/like","css/top","css/checkout","css/payment","css/sell","css/profile","css/mypage"], () => (__webpack_require__("./resources/sass/like.scss")))
-/******/ 	__webpack_require__.O(undefined, ["css/app","css/comment","css/like","css/top","css/checkout","css/payment","css/sell","css/profile","css/mypage"], () => (__webpack_require__("./resources/sass/comment.scss")))
-/******/ 	__webpack_require__.O(undefined, ["css/app","css/comment","css/like","css/top","css/checkout","css/payment","css/sell","css/profile","css/mypage"], () => (__webpack_require__("./resources/sass/mypage.scss")))
-/******/ 	__webpack_require__.O(undefined, ["css/app","css/comment","css/like","css/top","css/checkout","css/payment","css/sell","css/profile","css/mypage"], () => (__webpack_require__("./resources/sass/profile.scss")))
-/******/ 	__webpack_require__.O(undefined, ["css/app","css/comment","css/like","css/top","css/checkout","css/payment","css/sell","css/profile","css/mypage"], () => (__webpack_require__("./resources/sass/sell.scss")))
-/******/ 	__webpack_require__.O(undefined, ["css/app","css/comment","css/like","css/top","css/checkout","css/payment","css/sell","css/profile","css/mypage"], () => (__webpack_require__("./resources/sass/payment.scss")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/app","css/comment","css/like","css/top","css/checkout","css/payment","css/sell","css/profile","css/mypage"], () => (__webpack_require__("./resources/sass/checkout.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/app","css/comment","css/like","css/top","css/sell","css/profile","css/mypage"], () => (__webpack_require__("./resources/js/app.js")))
+/******/ 	__webpack_require__.O(undefined, ["css/app","css/comment","css/like","css/top","css/sell","css/profile","css/mypage"], () => (__webpack_require__("./resources/sass/app.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/app","css/comment","css/like","css/top","css/sell","css/profile","css/mypage"], () => (__webpack_require__("./resources/sass/top.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/app","css/comment","css/like","css/top","css/sell","css/profile","css/mypage"], () => (__webpack_require__("./resources/sass/like.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/app","css/comment","css/like","css/top","css/sell","css/profile","css/mypage"], () => (__webpack_require__("./resources/sass/comment.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/app","css/comment","css/like","css/top","css/sell","css/profile","css/mypage"], () => (__webpack_require__("./resources/sass/mypage.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/app","css/comment","css/like","css/top","css/sell","css/profile","css/mypage"], () => (__webpack_require__("./resources/sass/profile.scss")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/app","css/comment","css/like","css/top","css/sell","css/profile","css/mypage"], () => (__webpack_require__("./resources/sass/sell.scss")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

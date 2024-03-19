@@ -18,5 +18,8 @@ class DatabaseSeeder extends Seeder
     {
         CategoryItem::factory(5)->create();
         Like::factory(5)->create();
+        $this->call([
+            AdminUserSeeder::class,
+        ]);
     }
 }

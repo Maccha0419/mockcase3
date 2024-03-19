@@ -9,6 +9,7 @@ use App\Models\Condition;
 use App\Models\CategoryItem;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\SellRequest;
+use Storage;
 
 class SellController extends Controller
 {
@@ -23,6 +24,7 @@ class SellController extends Controller
         $dir = 'img/item';
         $file_name = $file->getClientOriginalName();
         $file->storeAs('public/' . $dir, $file_name);
+        Storage::disk('s3')->putFile('/item', $file);
 
         Category::create([
             'name' => $request->category,
@@ -40,8 +42,8 @@ class SellController extends Controller
             'description' => $request->description,
         ]);
         CategoryItem::create([
-            'item_id' => Category::where('name', $request->category)->first()->id,
-            'category_id' => item::first()->id,
+            'item_id' => item::orderBy('created_at', 'desc')->first()->id,
+            'category_id' => Category::where('name', $request->category)->first()->id,
         ]);
         return redirect()->route('top');
     }
