@@ -9,6 +9,10 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\SellController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\PaymentController;
+
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\StripeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,9 +30,11 @@ use App\Http\Controllers\CommentController;
     Route::get('/item/{item_id}', [ItemController::class, 'index'])->name('item');
 Route::middleware('auth')->group(function () {
     Route::post('/comment', [CommentController::class, 'comment']);
+
     Route::get('/purchase/{item_id}', [PurchaseController::class, 'index'])->name('confirm');
     Route::post('/purchase', [PurchaseController::class, 'purchase']);
-    Route::get('/purchase/payment/{item_id}', [PurchaseController::class, 'payment'])->name('payment');
+    Route::get('/purchase/payment/{item_id}', [PaymentController::class, 'index'])->name('payment');
+
     Route::get('/purchase/address/{item_id}', [AddressController::class, 'index'])->name('address');
     Route::post('/purchase/address/{item_id}', [AddressController::class, 'update'])->name('update_address');
     Route::get('/mypage', [MypageController::class, 'index'])->name('mypage');

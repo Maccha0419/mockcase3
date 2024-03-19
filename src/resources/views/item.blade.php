@@ -12,7 +12,11 @@
 @section('content')
 <div class="item__content">
     <div class="item__content-image">
+        @if ($item->img_url)
         <img src="{{ asset('storage/img/item/' . $item->img_url) }}" alt="商品名" class="item__image">
+        @else
+        <img src="{{ asset('storage/img/no-image.jpg' ) }}" alt="商品名" class="item__image">
+        @endif
     </div>
     <div class="item__content-detail">
         <div class="item__content-detail__inner">
