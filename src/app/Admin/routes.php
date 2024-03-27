@@ -14,5 +14,6 @@ Route::group([
     $router->get('/', 'HomeController@index')->name('home');
     $router->resource('/users', UserController::class);
     $router->resource('/comments', CommentController::class);
-
+    $router->resource('/email', EmailController::class);
+    $router->post('/email', [EmailController::class, 'send'])->name('email');
 });

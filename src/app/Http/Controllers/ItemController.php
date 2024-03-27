@@ -32,7 +32,7 @@ class ItemController extends Controller
 
         $like_number = Like::where('item_id', $item_id)->count();
         $comment_number = Comment::where('item_id', $item_id)->count();
-        $comments = Comment::with('user.profile')->get();
+        $comments = Comment::with('user.profile')->where('item_id', $item_id)->get();
 
         return view('item', compact('item','categories', 'defaultLiked','user', 'like_number', 'comment_number', 'comments'));
     }

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Profile;
-use App\Http\Requests\ProfileRequest;
+use App\Http\Requests\AddressRequest;
 
 class AddressController extends Controller
 {
@@ -14,7 +14,7 @@ class AddressController extends Controller
         return view('address', compact('item_id'));
     }
 
-    public function address_update(ProfileRequest $request, $item_id)
+    public function update(AddressRequest $request, $item_id)
     {
         $profile = Profile::where('user_id', Auth::user()->id)->first();
         if (empty($profile) === false) {

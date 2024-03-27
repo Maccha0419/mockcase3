@@ -53,7 +53,7 @@
 .item__information {
     padding-top: 60px;
 }
-.item__category {
+.item__category, .item__condition {
     display: flex;
     align-items: center;
     white-space: nowrap;
@@ -62,17 +62,24 @@
     display: flex;
     flex-wrap: wrap;
 }
-.item__category-thema {
+.item__category-thema, .item__condition-theme {
     padding-right: 30px;
 }
-.item__category-text {
+.item__category-text, .item__condition-inner {
     margin: 10px;
     padding: 0 0px;
 }
-.item__category-inner p {
+.item__category-inner p ,.item__condition p{
     padding: 0 15px;
     margin: 0;
     text-align: center;
     background: rgb(197, 197, 197);
     border-radius: 10px;
+}
+
+.comment {
+    position: absolute;
+    left: 420px;
+    background: white;
+    width: 50%;
 }

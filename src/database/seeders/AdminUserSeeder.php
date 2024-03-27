@@ -16,25 +16,21 @@ class AdminUserSeeder extends Seeder
      */
     public function run()
     {
-        // create a user.
         Administrator::truncate();
         Administrator::create([
             'username' => 'admin',
             'password' => Hash::make('admin'),
             'name'     => 'Administrator',
         ]);
- 
-        // create a role.
+
         Role::truncate();
         Role::create([
             'name' => 'Administrator',
             'slug' => 'administrator',
         ]);
- 
-        // add role to user.
+
         Administrator::first()->roles()->save(Role::first());
- 
-        //create a permission
+
         Permission::truncate();
         Permission::insert([
             [
@@ -68,10 +64,9 @@ class AdminUserSeeder extends Seeder
                 'http_path'   => "/auth/roles\r\n/auth/permissions\r\n/auth/menu\r\n/auth/logs",
             ],
         ]);
- 
+
         Role::first()->permissions()->save(Permission::first());
- 
-        // add default menus.
+
         Menu::truncate();
         Menu::insert([
             [
@@ -124,8 +119,7 @@ class AdminUserSeeder extends Seeder
                 'uri'       => 'auth/logs',
             ],
         ]);
- 
-        // add role to menu.
+
         Menu::find(2)->roles()->save(Role::first());
     }
 }

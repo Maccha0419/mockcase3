@@ -5137,31 +5137,17 @@ var render = function render() {
       expression: "active"
     }],
     staticClass: "comment__form-content"
-  }, [_vm._l(_vm.comments, function (comment) {
+  }, [_c("div", {
+    staticClass: "comment__form-content-scroll"
+  }, _vm._l(_vm.comments, function (comment) {
     return _c("div", {
       key: comment.id,
       staticClass: "comment_form-line"
-    }, [comment.user.user_id != _vm.userId ? _c("div", {
+    }, [_vm.userId === null || comment.user.id !== _vm.userId ? _c("div", {
       staticClass: "comment_form-line_content"
-    }, [comment.user.profile ? _c("div", {}, [comment.user.profile.img_url ? _c("img", {
-      attrs: {
-        src: "../storage/img/profile/" + comment.user.profile.img_url,
-        alt: ""
-      }
-    }) : _vm._e()]) : _c("img", {
-      attrs: {
-        src: "../storage/img/no-image.jpg",
-        alt: ""
-      }
-    }), _vm._v(" "), _c("p", {
-      staticClass: "comment_form-line_name"
-    }, [_vm._v(_vm._s(comment.user.name))]), _vm._v(" "), _c("p", {
-      staticClass: "comment_form-line_comment"
-    }, [_vm._v(_vm._s(comment.comment))])]) : _c("div", {
-      staticClass: "comment_form-line_content-myself"
-    }, [_c("p", {
-      staticClass: "comment_form-line_name"
-    }, [_vm._v(_vm._s())]), _vm._v(" "), comment.user.profile.img_url ? _c("img", {
+    }, [comment.user.profile ? _c("div", {
+      staticClass: "comment_form-line_content-first"
+    }, [comment.user.profile.img_url ? _c("img", {
       attrs: {
         src: "../storage/img/profile/" + comment.user.profile.img_url,
         alt: ""
@@ -5171,10 +5157,44 @@ var render = function render() {
         src: "../storage/img/no-image.jpg",
         alt: ""
       }
+    })]) : _c("img", {
+      attrs: {
+        src: "../storage/img/no-image.jpg",
+        alt: ""
+      }
     }), _vm._v(" "), _c("p", {
+      staticClass: "comment_form-line_name"
+    }, [_vm._v(_vm._s(comment.user.name))]), _vm._v(" "), _c("div", {
       staticClass: "comment_form-line_comment"
-    }, [_vm._v(_vm._s(comment.comment))])])]);
-  }), _vm._v(" "), _c("form", {
+    }, [_c("p", [_vm._v(_vm._s(comment.comment))])])]) : _c("div", {
+      staticClass: "comment_form-line_content"
+    }, [_c("div", {
+      staticClass: "right"
+    }, [_c("p", {
+      staticClass: "comment_form-line_name"
+    }, [_vm._v(_vm._s(comment.user.name))]), _vm._v(" "), comment.user.profile ? _c("div", {
+      staticClass: "comment_form-line_content-first"
+    }, [comment.user.profile.img_url ? _c("img", {
+      attrs: {
+        src: "../storage/img/profile/" + comment.user.profile.img_url,
+        alt: ""
+      }
+    }) : _c("img", {
+      attrs: {
+        src: "../storage/img/no-image.jpg",
+        alt: ""
+      }
+    })]) : _c("img", {
+      attrs: {
+        src: "../storage/img/no-image.jpg",
+        alt: ""
+      }
+    })]), _vm._v(" "), _c("div", {
+      staticClass: "comment_form-line_comment"
+    }, [_c("p", [_vm._v(_vm._s(comment.comment))])])])]);
+  }), 0), _vm._v(" "), _c("div", {
+    staticClass: "comment_text"
+  }, [_c("p", [_vm._v("商品へのコメント")])]), _vm._v(" "), _c("form", {
     staticClass: "comment-form-content__form",
     attrs: {
       action: "/comment",
@@ -5230,7 +5250,7 @@ var render = function render() {
         _vm.userId = $event.target.value;
       }
     }
-  }), _vm._v(" "), _c("input", {
+  }), _vm._v(" "), _c("textarea", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -5239,7 +5259,6 @@ var render = function render() {
     }],
     staticClass: "comment__form-mycomment",
     attrs: {
-      type: "textarea",
       name: "comment"
     },
     domProps: {
@@ -5253,7 +5272,7 @@ var render = function render() {
     }
   }), _vm._v(" "), _c("button", {
     staticClass: "comment__form-button"
-  }, [_vm._v("提出する")])])], 2)])], 1);
+  }, [_vm._v("コメントを提出する")])])])])], 1);
 };
 var staticRenderFns = [];
 render._withStripped = true;

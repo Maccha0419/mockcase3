@@ -166,6 +166,7 @@ return [
         'description' => '商品の説明',
         'item_img' => '画像',
         'price' => '価格',
+        'comment' => 'コメント',
     ],
 
 ];

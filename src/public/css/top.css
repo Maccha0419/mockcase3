@@ -52,7 +52,7 @@
   width: 25vh;
   background-position: center center;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
 }
 
 .dummy {

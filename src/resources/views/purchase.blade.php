@@ -16,7 +16,7 @@
                 @endif
             </div>
             <div class="purchase__item-description">
-                <h2 class="purchase__item-name">{{$item->name}}</h2>
+                <h1 class="purchase__item-name">{{$item->name}}</h1>
                 <p class="purchase__item-price">¥{{$item->price}}</p>
             </div>
         </div>
@@ -26,33 +26,33 @@
         </div>
         <div class="purchase__item-information">
             <h2 class="purchase__item-information-theme">配送先</h2>
-            <a href="{{ route('address', $item->id) }}" class="purchase__item-information-link">変更する</a>
+            <a href="{{ route('address', $item->id) }}" class="purchase__item-information-link-second">変更する</a>
         </div>
     </div>
     <div class="confirmation__content">
-        <div class="confirmation__inner">
-            <div class="confirmation__inner-item">
-                <p class="confirmation__inner-item-theme">商品代金</p>
-                <p class="confirmation__inner-item-value">¥{{$item->price}}</p>
-            </div>
-            <div class="confirmation__inner-item">
-                <p class="confirmation__inner-item-theme">お支払い金額</p>
-                <p class="confirmation__inner-item-value">¥{{$item->price}}</p>
-            </div>
-            <div class="confirmation__inner-item">
-                <p class="confirmation__inner-item-theme">お支払い方法</p>
-                <p class="confirmation__inner-item-value">{{$payment_method}}</p>
-            </div>
-        </div>
+        <table class="confirmation__inner">
+            <tr class="confirmation__row">
+                <th class="confirmation__theme">商品代金</th>
+                <td class="confirmation__item">¥{{$item->price}}</td>
+            </tr>
+            <tr class="confirmation__row">
+                <th class="confirmation__theme">お支払い金額</th>
+                <td class="confirmation__item">¥{{$item->price}}</td>
+            </tr>
+            <tr class="confirmation__row">
+                <th class="confirmation__theme">お支払い方法</th>
+                <td class="confirmation__item">{{$payment_method}}</td>
+            </tr>
+        </table>
         @if ($payment_method === 'クレジットカード')
-        <form action="/purchase" class="confirmation__content-submit" method="post">
+        <form action="/purchase" class="confirmation__content-submit-credit" method="post">
         @csrf
             <script
                 src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                 data-key="{{ env('STRIPE_KEY') }}"
                 data-amount="{{ json_encode($item->price) }}"
                 data-name="お支払い画面"
-                data-label="payment"
+                data-label="購入する"
                 data-description="現在はデモ画面です"
                 data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
                 data-locale="auto"
