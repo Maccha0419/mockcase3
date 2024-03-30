@@ -1,64 +1,284 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# coachtechフリマ
+coachtechフリマはある企業が開発した独自のフリマアプリです。
+![coachtechフリマ-top](/src/storage/readme/top.png)
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## 作成した目的
+coachtechブランドのアイテムを出品するため独自のフリマアプリを作成しました。
 
-## About Laravel
+## アプリケーションURL
+- 開発用環境  <http://localhost/>
+- 本番環境  <http://54.168.65.228/>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 機能一覧
+- 基本機能
+  - 会員登録機能
+  - ログイン機能
+  - ログアウト機能
+  - 商品一覧取得
+  - 商品詳細取得
+  - 商品お気に入り一覧取得
+  - ユーザー情報取得
+  - ユーザー購入商品一覧取得
+  - ユーザ出品商品一覧取得
+  - プロフィール変更
+  - 商品お気に入り追加
+  - 商品お気に入り削除
+  - 商品コメント追加
+  - 商品コメント削除
+  - 商品の出品
+- 追加機能
+  - 配送先変更機能
+  - 商品購入機能
+  - お支払い方法の選択・変更
+  - 管理者のユーザー削除
+  - 管理者のユーザーコメント削除
+  - 管理者のメール送信
+  - レスポンシブデザイン
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 使用技術（実行環境）
+- フレームワーク
+  - Laravel 8.83.8
+  - Vue.js 2.7.16
+- 言語
+  - php
+  - html
+  - css
+  - javascript
+- ライブラリ、ツール及びサービス
+  - Fortify
+  - Laravel-admin
+  - Stripe
+  - AWS (EC2, RDS, S3)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## テーブル設計
+Usersテーブル
+![table-users](src/storage/readme/table/users.png)  
+Profilesテーブル
+![table-profiles](src/storage/readme/table/profiles.png)  
+Itemsテーブル
+![table-items](src/storage/readme/table/items.png)  
+Conditionsテーブル
+![table-conditions](src/storage/readme/table/conditions.png)  
+Categoriesテーブル
+![table-categories](src/storage/readme/table/categories.png)  
+Likesテーブル
+![table-likes](src/storage/readme/table/likes.png)  
+Commentsテーブル
+![table-comments](src/storage/readme/table/comments.png)  
+Sold_itemsテーブル
+![table-sold_items](src/storage/readme/table/sold_items.png)  
+Category_itemsテーブル
+![table-category_items](src/storage/readme/table/category_items.png)
 
-## Learning Laravel
+## ER図
+![ER](/src/storage/readme/ER.png)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 環境構築
+### プロジェクトのセットアップ手順
+#### ディレクトリの作成
+アプリケーションを作成するために、開発環境を GitHub からクローンします。  
+`laravel-docker-template.git`をクローンしてください。
+```bash
+$ git clone git@github.com:coachtech-material/laravel-docker-template.git
+```
+#### Docker の設定
+複数のコンテナを扱うのでdocker-composeを使います。
+```bash
+$ docker-compose up -d --build
+$ code .
+```
+#### Laravel のパッケージのインストール
+docker-composeコマンドで PHPコンテナ内にログインし、composerコマンドを使って必要なパッケージをインストールします。
+```bash
+$ docker-compose exec php bash
+$ composer install
+```
+#### .envファイルの作成
+.envファイルは、.env.exampleファイルをコピーして作成します。
+```bash
+$ cp .env.example .env
+$ exit
+```
+.envファイルは以下のように修正します。
+```
+// 前略
+DB_CONNECTION=mysql
+DB_HOST=mysql
+DB_PORT=3306
+DB_DATABASE=laravel_db
+DB_USERNAME=laravel_user
+DB_PASSWORD=laravel_pass
+// 後略
+```
+#### viewファイルの作成
+各ページのviewファイルを作成します。
+resources/viewsに、以下のBladeファイルを作成します。
+- top.blade.php　&emsp;...トップページ
+- item.blade.php  &emsp;...商品詳細ページ
+- purchase.blade.php  &emsp;...購入ページ
+- payment.blade.php  &emsp;...決済方法選択ページ
+- address.blade.php  &emsp;...配送住所変更ページ
+- mypage.blade.php  &emsp;...マイページ
+- profile.blade.php  &emsp;...プロフィール変更ページ
+- sell.blade.php  &emsp;...商品出品ページ
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+resources/views/authには以下のBladeファイルを作成します。
+- login.blade.php  &emsp;...ログインページ
+- register.blade.php  &emsp;...会員登録ページ
 
-## Laravel Sponsors
+resources/views/layoutsには以下のBladeファイルを作成します。
+- app.blade.php  &emsp;...ヘッダー
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+また、非同期の機能を記述するために、resources/js/componentsには以下のファイルを作成します。
+- CommentComponent.vue&  &emsp;...コメント機能
+- LikeComponent.Vue &emsp;...お気に入り機能
+- MypsgeComponent.Vue &emsp;...お気に入りまたは購入商品切り替え機能
+- ProfileComponent.Vue &emsp;...プロフィール変更機能
+- SellComponent.Vue &emsp;...商品出品機能
+- TopComponent.Vue &emsp;...お気に入り商品切り替え機能
 
-### Premium Partners
+#### cssファイルの作成
+public/cssに以下のcssファイルを配置します。
+- top.css
+- address.css
+- comment.css
+- item.css
+- like.css
+- login.css
+- mypage.css
+- payment.css
+- profile.css
+- register.css
+- sell.css
+- purchase.css
+- common.css
+- sanitize.css
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+#### RouteとControllerの作成
+Controllerファイルを作成し、以下のルート及びアクションを紐付けします。
+![controller](src/storage/readme/route.png)
 
-## Contributing
+#### Modelの作成
+各モデルを作成します。
+- User.php
+- Item.php
+- Profile.php
+- Category.php
+- CategoryItem.php
+- Comment.php
+- Likes.php
+- SoldItem.php
+- Condition.php
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+#### バリデーションの作成
+各ファイルを作成します。  
+なお、ログインや登録の際のバリデーションはFortifyに備わる機能を使用しました。
+![バリデーション](src/storage/readme/validation.png)
 
-## Code of Conduct
+<br></br>
+### 会員登録・ログイン機能
+ユーザーの会員登録・ログイン機能はFortifyを使用して実装しました。
+##### Fortifyの導入
+Laravelをインストールしたプロジェクト内でfortifyをインストールし、関連ファイルを作成します。
+その後、マイグレートを実行します。
+```bash
+$ composer require laravel/fortify
+$ php artisan migrate
+$ php artisan vendor:publish --provider="Laravel\Fortify\FortifyServiceProvider"
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+<br></br>
+### 非同期機能
+非同期の機能を実装するため、Vue.jsを使用しました。
+##### Vue.jsの導入
+下記コマンドでpackage.jsonに記述されているパッケージをインストールします。
+```
+$ npm install vue@next vue-loader@next
+$ npm install -D tailwindcss
+```
+プロジェクトをビルドして編集を反映させます。
+```
+$ npm run watch
+```
 
-## Security Vulnerabilities
+<br></br>
+### 管理画面の構築
+管理画面を作成するにあたり、Laravel-adminというライブラリを使用しました。
+以下のコマンドの流れでセットアップします。
+```
+$ composer require encore/laravel-admin:1.*
+$ php artisan vendor:publish --provider="Encore\Admin\AdminServiceProvider"
+$ php artisan admin:install
+```  
+以下のURLにアクセスすることで管理ページを閲覧できます。  
+URL: http://localhost:8000/admin (本番環境は http://54.168.65.228/admin)  
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+管理画面では、画面左のusersタブからusersテーブルを確認でき、ユーザーの削除を行うことができます。  
+commentタブでcommentsテーブルを確認でき、コメントの削除を行うことができます。  
+emailタブでは管理者側からユーザーにメール送信できます。  
 
-## License
+※管理人のアカウントは作成済みです。  
+使用する前に以下で管理者情報を作成できます。
+```
+$ php artisan db:seed
+```  
+なお、ID、パスワードは以下になります。
+- ユーザーID　&emsp;...admiin
+- パスワード　&emsp;...admiin
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+![admin](src/storage/readme/admin.png)
+
+<br></br>
+### クレジット決済の導入
+クレジットカードで決済するにあたり、Stripeというツールを使用しました。
+以下のコマンドでLaravel Cashierをインストールします。
+```
+$ composer require “laravel/cashier”:”~7.0″
+```
+Stripで取得したAPIキーを.envに記述します。
+```
+STRIPE_KEY=公開可能キー
+STRIPE_SECRET=シークレットキー
+```
+決済情報は以下のURLで確認できます。  
+URL: https://dashboard.stripe.com/test/dashboard  
+
+![stripe](src/storage/readme/stripe.png)
+
+<br></br>
+### 本番環境の構築
+#### EC2の環境構築
+AWSにてEC2インスタンスを作成後、Amazon Linux 2にログインします。  
+以下のライブラリをインストトールします。
+- nginx
+- php-fpm
+- composer
+
+#### RDSの環境構築
+AWSにてRDSでデータベースを作成します。  
+Amazon Linux 2にログイン後、MySQLをインストールします。  
+上記で使用したC2インスタンスにRDSのセキュリティグループを設定します。  
+.envにて以下の項目を編集する。
+```
+DB_CONNECTION=mysql
+DB_HOST=エンドポイント
+DB_PORT=3306
+DB_DATABASE=laravel
+DB_USERNAME=マスターユーザー名
+DB_PASSWORD=マスターパスワード
+```
+
+#### S3の環境構築
+AWSにてS3でバケットを作成します。  
+.envにて以下の項目を編集する。
+```
+AWS_ACCESS_KEY_ID=アクセスキーID
+AWS_SECRET_ACCESS_KEY=IAMユーザーのシークレットアクセスキー
+AWS_DEFAULT_REGION=ap-northeast-1
+AWS_BUCKET=バケット名
+AWS_USE_PATH_STYLE_ENDPOINT=false
+```
+バケット内のオブジェクトは以下になります。
+- item/ &emsp;...商品画像を保存するフォルダ
+- user/　&emsp;...ユーザーのプロフィール画像を保存するフォルダ
+- no-image.jpg　&emsp;...商品及びユーザーのプロフィール画像が選択されていない場合に使用する画像ファイル

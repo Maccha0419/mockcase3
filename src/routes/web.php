@@ -26,7 +26,6 @@ use App\Http\Controllers\MailController;
     Route::get('/', [TopController::class, 'index'])->name('top');
     Route::get('/search', [TopController::class, 'search']);
     Route::get('/item/{item_id}', [ItemController::class, 'index'])->name('item');
-    // Route::post('/email', [MailController::class, 'send'])->name('email');
 
 Route::middleware('auth')->group(function () {
     Route::post('/comment', [CommentController::class, 'comment']);
@@ -35,8 +34,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/purchase', [PurchaseController::class, 'purchase']);
     Route::get('/purchase/payment/{item_id}', [PaymentController::class, 'index'])->name('payment');
 
-    Route::post('/purchase/address/{item_id}', [AddressController::class, 'update'])->name('update_address');
     Route::get('/purchase/address/{item_id}', [AddressController::class, 'index'])->name('address');
+    Route::post('/purchase/address/{item_id}', [AddressController::class, 'update'])->name('update_address');
 
     Route::get('/mypage', [MypageController::class, 'index'])->name('mypage');
     Route::get('/mypage/profile', [ProfileController::class, 'index']);
