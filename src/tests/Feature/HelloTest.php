@@ -12,13 +12,27 @@ class HelloTest extends TestCase
     {
         $this->assertTrue(true);
 
-        $arr = [];
-        $this->assertEmpty($arr);
+        // $arr = [];
+        // $this->assertEmpty($arr);
+        // $txt = "Hello World";
+        // $this->assertEquals('Hello World', $txt);
+        // $n = random_int(0, 100);
+        // $this->assertLessThan(100, $n);
 
-        $txt = "Hello World";
-        $this->assertEquals('Hello World', $txt);
+        // $response = $this->get('/');
+        // $response->assertStatus(200);
+        // $response = $this->get('/no_route');
+        // $response->assertStatus(404);
 
-        $n = random_int(0, 100);
-        $this->assertLessThan(100, $n);
+        User::factory()->create([
+            'name'=>'aaa',
+            'email'=>'bbb@ccc.com',
+            'password'=>'test12345'
+        ]);
+        $this->assertDatabaseHas('users',[
+            'name'=>'aaa',
+            'email'=>'bbb@ccc.com',
+            'password'=>'test12345'
+        ]);
     }
 }

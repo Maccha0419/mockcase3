@@ -83,3 +83,33 @@
     background: white;
     width: 50%;
 }
+
+@media screen and (max-width: 768px) {
+    .item__content {
+        display: block;
+        top: 20vh;
+    }
+    .item__content-image {
+        position: relative;
+        width: 80%;
+    }
+    .item__image {
+        position: absolute;
+        top: 14%;
+        left: 20%;
+        height: 300px;
+        width: 30vh;
+        object-fit: cover;
+    }
+    .item__content-detail {
+        width: 90%;
+        padding-top: 320px;
+        margin: 20px;
+    }
+    .comment {
+        left: 50px;
+    }
+    .item__purchase-button {
+        width: 100%;
+    }
+}

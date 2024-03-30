@@ -37,7 +37,7 @@
             </div>
             <div class="email__right">
                 <div class="email__inner">
-                    <form action="{{ route('email') }}" class="email__form" method="post">
+                    <form action="/admin/email" class="email__form" method="post">
                         @csrf
                         <ul class="email-nav">
                             <li class="email-nav__item">

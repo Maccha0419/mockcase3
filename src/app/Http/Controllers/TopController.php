@@ -14,6 +14,9 @@ class TopController extends Controller
         $keyword = $request->keyword;
         $user = Auth::user();
         $items = Item::get();
+        if (!$items) {
+            $items = "no";
+        }
         return view('top', compact('user','items','keyword'));
     }
 

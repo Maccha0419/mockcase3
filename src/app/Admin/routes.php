@@ -2,6 +2,7 @@
 
 use Illuminate\Routing\Router;
 
+
 Admin::routes();
 
 Route::group([
@@ -15,5 +16,7 @@ Route::group([
     $router->resource('/users', UserController::class);
     $router->resource('/comments', CommentController::class);
     $router->resource('/email', EmailController::class);
-    $router->post('/email', [EmailController::class, 'send'])->name('email');
 });
+
+use App\Admin\Controllers\EmailController;
+Route::post('/admin/email', [EmailController::class, 'send'])->name('email');

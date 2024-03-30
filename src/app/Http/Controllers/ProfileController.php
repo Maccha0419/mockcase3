@@ -21,19 +21,14 @@ class ProfileController extends Controller
         $profile = Profile::where('user_id', Auth::user()->id)->first();
         $file = $request->file('user_img');
         if ($file) {
-            $dir = 'img/profile';
             $file_name = $file->getClientOriginalName();
-            $file->storeAs('public/' . $dir, $file_name);
-            Storage::disk('s3')->putFile('/user', $file);
+            $path = Storage::disk('s3')->putFile('/user', $file, 'public');
+            $img = Storage::disk('s3')->url($path);
         } else {
             if (!$profile) {
-                $file_name = null;
+                $img = "https://mockcase3.s3.ap-northeast-1.amazonaws.com/no-image.jpg";
             } else {
-                if(!empty($profile->img_url)) {
-                    $file_name = null;
-                }else {
-                    $file_name = $profile->img_url;
-                }
+                $img = $profile->img_url;
             }
         }
 
@@ -42,7 +37,7 @@ class ProfileController extends Controller
         ]);
         if (!empty($profile)) {
             $profile -> update([
-                'img_url' => $file_name,
+                'img_url' => $img,
                 'postcode' => $request->postcode,
                 'address' => $request->address,
                 'building' => $request->building,
@@ -50,7 +45,7 @@ class ProfileController extends Controller
         }else {
             Profile::create([
                 'user_id' => Auth::user()->id,
-                'img_url' => $file_name,
+                'img_url' => $img,
                 'postcode' => $request->postcode,
                 'address' => $request->address,
                 'building' => $request->building,

@@ -3,7 +3,7 @@
     max-width: 100%;
 }
 .login-form__heading {
-    padding-top: 80px;
+    padding-top: 130px;
     padding-bottom: 80px;
     text-align: center;
     font-weight: bold;
@@ -58,6 +58,9 @@
 }
 
 @media screen and (max-width : 768px) {
+    .login-form__heading {
+        padding-top: 230px;
+    }
     .form {
         width: 80%;
     }

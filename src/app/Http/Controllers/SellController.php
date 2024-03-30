@@ -20,12 +20,13 @@ class SellController extends Controller
 
     public function sell(SellRequest $request)
     {
-        $file = $request->file('item_img');
-        $dir = 'img/item';
-        $file_name = $file->getClientOriginalName();
-        $file->storeAs('public/' . $dir, $file_name);
-        Storage::disk('s3')->putFile('/item', $file);
-
+        if ($request->file('item_img')) {
+            $file = $request->file('item_img');
+            $path = Storage::disk('s3')->putFile('/item', $file, 'public');
+            $img = Storage::disk('s3')->url($path);
+        }else {
+            $img = "https://mockcase3.s3.ap-northeast-1.amazonaws.com/no-image.jpg";
+        }
         Category::create([
             'name' => $request->category,
         ]);
@@ -38,7 +39,7 @@ class SellController extends Controller
             'name' => $request->item_name,
             'brand' => $request->brand,
             'price' => $request->price,
-            'img_url' => $file_name,
+            'img_url' => $img,
             'description' => $request->description,
         ]);
         CategoryItem::create([

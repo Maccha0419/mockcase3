@@ -13,7 +13,7 @@
         <div class="top__inner">
             <div class="top__inner-card" v-for="item in items" v-bind:key="item.id">
                 <a v-bind:href="`item/${item.id}`">
-                    <input class="item__card-img" name="img_url" type="image" :src="'../storage/img/item/' + item.img_url" alt="商品">
+                    <input class="item__card-img" name="img_url" type="image" :src="item.img_url" alt="商品">
                 </a>
             </div>
             <div class="dummy"></div>

@@ -51,7 +51,7 @@
   border-radius: 50%;
   background-position: center center;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
 }
 
 .comment_form-line_name {

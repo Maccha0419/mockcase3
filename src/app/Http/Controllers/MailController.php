@@ -34,7 +34,7 @@ class MailController extends Controller
         } else{
             $messages = 'メールを送信しました';
 			// 別のページに遷移する
-			return route('email__admin');
+			return redirect();
         }
     }
 }

@@ -50,6 +50,9 @@
 
 
 @media screen and (max-width : 768px) {
+    .address-form__heading {
+        padding-top: 230px;
+    }
     .form {
         width: 80%;
     }

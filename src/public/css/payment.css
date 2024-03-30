@@ -20,5 +20,10 @@
     font-size: large;
     font-weight: bold;
     margin-top: 20px;
-    
+}
+
+@media screen and (max-width: 768px) {
+    .form {
+        width: 50%;
+    }
 }

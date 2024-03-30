@@ -9,11 +9,7 @@
     <div class="purchase__item">
         <div class="purchase__item-inner">
             <div class="purchase__item-img">
-                @if ($item->img_url)
-                <img src="{{ asset('storage/img/item/' . $item->img_url) }}" alt="商品名" class="item__image">
-                @else
-                <img src="{{ asset('storage/img/no-image.jpg' ) }}" alt="商品名" class="item__image">
-                @endif
+                <img src="{{ $item->img_url }}" alt="商品名" class="item__image">
             </div>
             <div class="purchase__item-description">
                 <h1 class="purchase__item-name">{{$item->name}}</h1>

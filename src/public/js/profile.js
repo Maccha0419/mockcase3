@@ -5079,6 +5079,7 @@ __webpack_require__.r(__webpack_exports__);
   props: ['old', 'errors'],
   data: function data() {
     return {
+      no_image: "https://mockcase3.s3.ap-northeast-1.amazonaws.com/no-image.jpg",
       csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
       name: this.old.name,
       user_img: this.old.user_img,
@@ -5138,7 +5139,7 @@ var render = function render() {
     staticClass: "form__upper"
   }, [!_vm.user_img ? _c("img", {
     attrs: {
-      src: "../storage/img/no-image.jpg",
+      src: _vm.no_image,
       alt: ""
     }
   }) : _c("img", {

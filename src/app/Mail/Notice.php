@@ -29,7 +29,7 @@ class Notice extends Mailable
      */
     public function build()
     {
-        return $this->to('aaa@example.com')
+        return self::to('aaa@example.com')
             ->cc('bbb@example.com')
             ->bcc('ccc@example.com')
             ->from('XXX@XXXX','佐藤一郎')

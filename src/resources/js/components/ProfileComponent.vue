@@ -2,7 +2,7 @@
     <form class="form" action="/mypage/profile" method="post" enctype="multipart/form-data">
         <input type="hidden" name="_token" :value="csrf">
         <div class="form__upper">
-            <img v-if="!user_img" :src="'../storage/img/no-image.jpg'" alt="">
+            <img v-if="!user_img" :src="no_image" alt="">
             <img v-else :src="user_img" enctype="multipart/form-data" type="hidden">
             <label class="form__image-edit">画像を選択する
                 <input class="" type="file" name="user_img" ref="preview" @change="upload()" style="display:none">
@@ -60,6 +60,7 @@ export default {
     props: ['old', 'errors'],
     data() {
         return {
+            no_image:"https://mockcase3.s3.ap-northeast-1.amazonaws.com/no-image.jpg",
             csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
             name: this.old.name,
             user_img: this.old.user_img,

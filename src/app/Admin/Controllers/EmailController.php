@@ -31,7 +31,6 @@ class EmailController extends AdminController
     }
 
     public function send(Request $request){
-        // dd(true);
         $users = User::get();
         // ②メール送信に使うインスタンスを生成
         $welcomeMail = new Notice();
