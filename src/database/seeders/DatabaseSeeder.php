@@ -16,9 +16,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        CategoryItem::factory(10)->create();
-        Like::factory(10)->create();
-        Comment::factory(10)->create();
+        // CategoryItem::factory(10)->create();
+        // Like::factory(10)->create();
+        // Comment::factory(10)->create();
         $this->call([
             AdminUserSeeder::class,
             AdminTablesSeeder::class,
