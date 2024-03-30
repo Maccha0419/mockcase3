@@ -53,20 +53,28 @@ coachtechブランドのアイテムを出品するため独自のフリマア�
 ## テーブル設計
 Usersテーブル
 ![table-users](src/storage/readme/table/users.png)  
+
 Profilesテーブル
 ![table-profiles](src/storage/readme/table/profiles.png)  
+
 Itemsテーブル
 ![table-items](src/storage/readme/table/items.png)  
+
 Conditionsテーブル
 ![table-conditions](src/storage/readme/table/conditions.png)  
+
 Categoriesテーブル
 ![table-categories](src/storage/readme/table/categories.png)  
+
 Likesテーブル
 ![table-likes](src/storage/readme/table/likes.png)  
+
 Commentsテーブル
 ![table-comments](src/storage/readme/table/comments.png)  
+
 Sold_itemsテーブル
 ![table-sold_items](src/storage/readme/table/sold_items.png)  
+
 Category_itemsテーブル
 ![table-category_items](src/storage/readme/table/category_items.png)
 
